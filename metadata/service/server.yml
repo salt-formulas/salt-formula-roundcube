@@ -1,0 +1,18 @@
+applications:
+  - roundcube
+parameters:
+  roundcube:
+    server:
+      enabled: true
+      force_https: false
+      mail:
+        host: 127.0.0.1
+      plugins:
+        - archive
+        - zipdownload
+        - newmail_notifier
+      mysql:
+        user: roundcube
+        database: roundcube
+        password: ${_param:mysql_roundcube_password}
+        host: 127.0.0.1
