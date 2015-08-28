@@ -246,7 +246,7 @@ $rcmail_config['skin_include_php'] = false;
 $rcmail_config['display_version'] = false;
 
 // Session lifetime in minutes
-$rcmail_config['session_lifetime'] = 10;
+$rcmail_config['session_lifetime'] = {{ server.session.lifetime }};
 
 // Session domain: .example.org
 $rcmail_config['session_domain'] = '';
@@ -282,7 +282,7 @@ $rcmail_config['x_frame_options'] = 'sameorigin';
 // this key is used to encrypt the users imap password which is stored
 // in the session record (and the client cookie if remember password is enabled).
 // please provide a string of exactly 24 chars.
-$rcmail_config['des_key'] = 'Ckhuv6VW6iUdbxpovKzhbepk';
+$rcmail_config['des_key'] = '{{ server.session.des_key }}';
 
 // Automatically add this domain to user names for login
 // Only for IMAP servers that require full e-mail addresses for login
@@ -309,7 +309,7 @@ $rcmail_config['mail_domain'] = '';
 // Password charset.
 // Use it if your authentication backend doesn't support UTF-8.
 // Defaults to ISO-8859-1 for backward compatibility
-$rcmail_config['password_charset'] = 'ISO-8859-1';
+$rcmail_config['password_charset'] = 'UTF-8';
 
 // How many seconds must pass between emails sent by a user
 $rcmail_config['sendmail_delay'] = 0;
@@ -435,7 +435,8 @@ $rcmail_config['list_cols'] = array('subject', 'status', 'fromto', 'date', 'size
 
 // the default locale setting (leave empty for auto-detection)
 // RFC1766 formatted language name like en_US, de_DE, de_CH, fr_FR, pt_BR
-$rcmail_config['language'] = 'en_US';
+// $rcmail_config['language'] = 'en_US';
+$rcmail_config['language'] = '';
 
 // use this format for date display (date or strftime format)
 $rcmail_config['date_format'] = 'Y-m-d';
@@ -838,7 +839,7 @@ $rcmail_config['autoexpand_threads'] = 0;
 // -1 - don't cite the original message
 // 0  - place cursor below the original message
 // 1  - place cursor above original message (top posting)
-$rcmail_config['reply_mode'] = 0;
+$rcmail_config['reply_mode'] = 1;
 
 // When replying strip original signature from message
 $rcmail_config['strip_existing_sig'] = true;
@@ -869,7 +870,7 @@ $rcmail_config['addressbook_search_mods'] = null;  // Example: array('name'=>1, 
 $rcmail_config['delete_always'] = false;
 
 // Directly delete messages in Junk instead of moving to Trash
-$rcmail_config['delete_junk'] = false;
+$rcmail_config['delete_junk'] = true;
 
 // Behavior if a received message requests a message delivery notification (read receipt)
 // 0 = ask the user, 1 = send automatically, 2 = ignore (never send or ask)
@@ -905,9 +906,5 @@ $rcmail_config['autocomplete_single'] = false;
 // Supported values: Andale Mono, Arial, Arial Black, Book Antiqua, Courier New,
 // Georgia, Helvetica, Impact, Tahoma, Terminal, Times New Roman, Trebuchet MS, Verdana
 $rcmail_config['default_font'] = 'Verdana';
-
-// Additional settings
-// Compose reply on top
-$config['top_posting'] = true;
 
 // end of config file

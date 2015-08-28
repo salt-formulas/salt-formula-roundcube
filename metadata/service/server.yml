@@ -7,6 +7,11 @@ parameters:
       force_https: false
       mail:
         host: 127.0.0.1
+      session:
+        # Lifetime in minutes
+        lifetime: 30
+        # 24 random characters
+        des_key: 'Ckhuv6VW6iUdbxpovKzhbepk'
       plugins:
         - archive
         - zipdownload

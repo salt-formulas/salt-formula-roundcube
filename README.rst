@@ -1,6 +1,6 @@
-=======
+=========
 roundcube
-=======
+=========
 
 Install and configure roundcube.
 
@@ -31,13 +31,7 @@ Requirements
 
 - linux
 - mysql (for mysql backend)
-
-Optional
---------
-
-- glusterfs (to serve as mail storage backend)
-- postfix
-- roundcube
+- `dovecot <https://github.com/tcpcloud/salt-dovecot-formula>`_
 
 Configuration parameters
 ========================
@@ -57,32 +51,33 @@ Server
      - service.roundcube.server
    parameters:
     _param:
-      roundcube_origin: mail.eru
-      mysql_mailserver_password: Peixeilaephahmoosa2daihoh4yiaThe
+      postfix_origin: mail.eru
+      mysql_roundcube_password: changeme
     roundcube:
-      server:
-        origin: ${_param:roundcube_origin}
+      force_https: false
+      mail:
+        host: ${_param:postfix_origin}
     mysql:
       server:
         database:
-          mailserver:
+          roundcube:
             encoding: UTF8
             locale: cs_CZ
             users:
-            - name: mailserver
-              password: ${_param:mysql_mailserver_password}
+            - name: roundcube
+              password: ${_param:mysql_roundcube_password}
               host: 127.0.0.1
               rights: all privileges
     apache:
       server:
         site:
-          roundcubeadmin:
+          roundcube:
             enabled: true
             type: static
-            name: roundcubeadmin
-            root: /usr/share/roundcubeadmin
+            name: roundcube
+            root: /usr/share/roundcube
             host:
-              name: ${_param:roundcube_origin}
+              name: ${_param:postfix_origin}
               aliases:
                 - ${linux:system:name}.${linux:system:domain}
                 - ${linux:system:name}
@@ -97,11 +92,19 @@ Server
 
     roundcube:
       server:
-        origin: ${_param:roundcube_origin}
-        admin:
-          enabled: false
+        mail:
+          host: mail.cloudlab.cz
+        session:
+          # 24 random characters
+          des_key: 'Ckhuv6VW6iUdbxpovKzhbepk'
+          # 30 minutes
+          lifetime: 30
+        plugins:
+          - archive
+          - zipdownload
+          - newmail_notifier
 
 Read more
 =========
 
-* http://wiki2.roundcube.org/
+* https://roundcube.net/
