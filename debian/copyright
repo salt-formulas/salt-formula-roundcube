@@ -1,12 +1,12 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: salt-formula-roundcube
 Upstream-Contact: Filip Pytloun <filip.pytloun@tcpcloud.eu>
-Source: https://github.com/tcpcloud/salt-roundcube-formula
+Source: https://github.com/tcpcloud/salt-formula-roundcube
 
 Files: *
 Copyright: 2014-2015 tcp cloud
 License: Apache-2.0
-  Copyright (C) 2014-2015 tcp cloud
+  Copyright (C) 2014-2015 tcp cloud a. s.
   .
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
