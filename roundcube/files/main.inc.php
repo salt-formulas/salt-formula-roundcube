@@ -124,7 +124,7 @@ $rcmail_config['imap_auth_cid'] = null;
 $rcmail_config['imap_auth_pw'] = null;
 
 // Type of IMAP indexes cache. Supported values: 'db', 'apc' and 'memcache'.
-$rcmail_config['imap_cache'] = null;
+$rcmail_config['imap_cache'] = {{ server.cache.engine }};
 
 // Enables messages cache. Only 'db' cache is supported.
 $rcmail_config['messages_cache'] = false;
@@ -263,11 +263,13 @@ $rcmail_config['session_path'] = null;
 // Backend to use for session storage. Can either be 'db' (default) or 'memcache'
 // If set to memcache, a list of servers need to be specified in 'memcache_hosts'
 // Make sure the Memcache extension (http://pecl.php.net/package/memcache) version >= 2.0.0 is installed
-$rcmail_config['session_storage'] = 'db';
+$rcmail_config['session_storage'] = '{{ server.cache.engine }}';
 
 // Use these hosts for accessing memcached
 // Define any number of hosts in the form of hostname:port or unix:///path/to/socket.file
-$rcmail_config['memcache_hosts'] = null; // e.g. array( 'localhost:11211', '192.168.1.12:11211', 'unix:///var/tmp/memcached.sock' );
+{%- if server.cache.engine == 'memcache' %}
+$rcmail_config['memcache_hosts'] = array({% for host in server.cache.hosts %}'{{ host.address }}:{{ host.port }}',{% endif %});
+{%- endif %}
 
 // check client IP in session athorization
 $rcmail_config['ip_check'] = false;

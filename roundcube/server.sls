@@ -40,4 +40,12 @@ php_mcrypt_enable:
     - watch:
       - pkg: roundcube_packages
 
+{%- if server.cache.engine == 'memcache' %}
+memcache_packages:
+  pkg.installed:
+    - name: php5-memcached
+    - require_in:
+      - file: roundcube_main_config
+{%- endif %}
+
 {%- endif %}

@@ -21,3 +21,5 @@ parameters:
         database: roundcube
         password: ${_param:mysql_roundcube_password}
         host: 127.0.0.1
+      cache:
+        engine: db
