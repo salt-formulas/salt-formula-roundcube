@@ -23,3 +23,5 @@ parameters:
         host: 127.0.0.1
       cache:
         engine: db
+      addressbook:
+        type: 'sql'

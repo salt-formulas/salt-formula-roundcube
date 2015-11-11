@@ -268,7 +268,7 @@ $rcmail_config['session_storage'] = '{{ server.cache.engine }}';
 // Use these hosts for accessing memcached
 // Define any number of hosts in the form of hostname:port or unix:///path/to/socket.file
 {%- if server.cache.engine == 'memcache' %}
-$rcmail_config['memcache_hosts'] = array({% for host in server.cache.hosts %}'{{ host.address }}:{{ host.port }}',{% endif %});
+$rcmail_config['memcache_hosts'] = array({% for host in server.cache.hosts %}'{{ host.address }}:{{ host.port }}',{% endfor %});
 {%- endif %}
 
 // check client IP in session athorization
@@ -559,7 +559,7 @@ $rcmail_config['undo_timeout'] = 0;
 // SQL address book in the 'Address Book' view.
 // If set to '' then no address book will be displayed or only the
 // addressbook which is created by a plugin (like CardDAV).
-$rcmail_config['address_book_type'] = 'sql';
+$rcmail_config['address_book_type'] = '{{ server.addressbook.type }}';
 
 // In order to enable public ldap search, configure an array like the Verisign
 // example further below. if you would like to test, simply uncomment the example.
