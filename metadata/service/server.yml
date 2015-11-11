@@ -5,6 +5,7 @@ parameters:
     server:
       enabled: true
       force_https: false
+      skin: larry
       mail:
         host: 127.0.0.1
       session:
