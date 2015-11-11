@@ -5,7 +5,13 @@ parameters:
     server:
       enabled: true
       force_https: false
-      skin: larry
+      theme: larry
+      view:
+        show_images: 0
+        prefer_html: true
+        display_next: false
+      compose:
+        html_editor: 0
       mail:
         host: 127.0.0.1
       session:

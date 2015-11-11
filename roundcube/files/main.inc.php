@@ -739,7 +739,7 @@ $rcmail_config['addressbook_search_mode'] = 0;
 $rcmail_config['default_charset'] = 'UTF-8';
 
 // skin name: folder from skins/
-$rcmail_config['skin'] = '{{ server.skin }}';
+$rcmail_config['skin'] = '{{ server.theme }}';
 
 // show up to X items in messages list view
 $rcmail_config['mail_pagesize'] = 50;
@@ -763,13 +763,13 @@ $rcmail_config['addressbook_name_listing'] = 0;
 $rcmail_config['timezone'] = 'auto';
 
 // prefer displaying HTML messages
-$rcmail_config['prefer_html'] = true;
+$rcmail_config['prefer_html'] = {{ server.view.prefer_html }};
 
 // display remote inline images
 // 0 - Never, always ask
 // 1 - Ask if sender is not in address book
 // 2 - Always show inline images
-$rcmail_config['show_images'] = 0;
+$rcmail_config['show_images'] = {{ server.view.inline_images }};
 
 // open messages in new window
 $rcmail_config['message_extwin'] = false;
@@ -779,7 +779,7 @@ $rcmail_config['compose_extwin'] = false;
 
 // compose html formatted messages by default
 // 0 - never, 1 - always, 2 - on reply to HTML message, 3 - on forward or reply to HTML message
-$rcmail_config['htmleditor'] = 0;
+$rcmail_config['htmleditor'] = {{ server.compose.html_editor }};
 
 // show pretty dates as standard
 $rcmail_config['prettydate'] = true;
@@ -830,7 +830,7 @@ $rcmail_config['refresh_interval'] = 60;
 $rcmail_config['check_all_folders'] = false;
 
 // If true, after message delete/move, the next message will be displayed
-$rcmail_config['display_next'] = true;
+$rcmail_config['display_next'] = {{ server.view.display_next }};
 
 // 0 - Do not expand threads
 // 1 - Expand all threads automatically
