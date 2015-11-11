@@ -769,7 +769,7 @@ $rcmail_config['prefer_html'] = {{ server.view.prefer_html }};
 // 0 - Never, always ask
 // 1 - Ask if sender is not in address book
 // 2 - Always show inline images
-$rcmail_config['show_images'] = {{ server.view.inline_images }};
+$rcmail_config['show_images'] = {{ server.view.show_images }};
 
 // open messages in new window
 $rcmail_config['message_extwin'] = false;
