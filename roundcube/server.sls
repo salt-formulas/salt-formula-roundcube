@@ -48,4 +48,28 @@ memcache_packages:
       - file: roundcube_main_config
 {%- endif %}
 
+{%- for plugin in server.plugins %}
+{%- if plugin == 'password' %}
+
+roundcube_plugin_{{ plugin }}_dir:
+  file.directory:
+    - name: /etc/roundcube/plugins/{{ plugin }}
+    - makedirs: true
+    - require:
+      - pkg: roundcube_packages
+
+roundcube_plugin_{{ plugin }}_config:
+  file.managed:
+    - name: /etc/roundcube/plugins/{{ plugin }}/config.inc.php
+    - source: salt://roundcube/files/plugins/{{ plugin }}.inc.php
+    - mode: 640
+    - user: root
+    - group: www-data
+    - template: jinja
+    - require:
+      - file: roundcube_plugin_{{ plugin }}_dir
+
+{%- endif %}
+{%- endfor %}
+
 {%- endif %}
