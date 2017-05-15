@@ -1,5 +1,5 @@
 {% set server = salt['grains.filter_by']({
     'Debian': {
-        'pkgs': ['roundcube-mysql', 'roundcube-plugins', 'roundcube-plugins-extra', 'php5-mcrypt', 'php-mail-mimedecode'],
+        'pkgs': ['roundcube-mysql', 'roundcube-plugins', 'roundcube-plugins-extra', 'php-mcrypt', 'php-mail-mimedecode'],
     },
 }, merge=salt['pillar.get']('roundcube:server')) %}
