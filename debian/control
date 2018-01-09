@@ -11,6 +11,6 @@ Vcs-Git: https://github.com/tcpcloud/salt-formula-roundcube.git
 
 Package: salt-formula-roundcube
 Architecture: all
-Depends: ${misc:Depends}, salt-master, reclass, salt-formula-postfix
+Depends: ${misc:Depends}, salt-formula-postfix
 Description: GlusterFS Salt formula
  Install and configure GlusterFS server and client.
