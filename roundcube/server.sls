@@ -28,6 +28,8 @@ roundcube_packages:
   pkg.installed:
     - names: {{ server.pkgs }}
 
+{%- if grains.get('noservices') == false %}
+
 roundcube_db_install:
   cmd.wait:
     - name: mysql -u{{ server.mysql.user }} -p{{ server.mysql.password }} -h{{ server.mysql.host }} {{ server.mysql.database }} < /usr/share/dbconfig-common/data/roundcube/install/mysql
@@ -39,6 +41,8 @@ php_mcrypt_enable:
     - name: php5enmod mcrypt
     - watch:
       - pkg: roundcube_packages
+
+{%- endif %}
 
 {%- if server.cache.engine == 'memcache' %}
 memcache_packages:
