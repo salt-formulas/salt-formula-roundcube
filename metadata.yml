@@ -1,6 +1,6 @@
 name: "roundcube"
 version: "0.1"
-source: "https://github.com/tcpcloud/salt-formula-roundcube"
+source: "https://github.com/salt-formulas/salt-formula-roundcube"
 dependencies:
 - name: postfix
-  source: "https://github.com/tcpcloud/salt-formula-postfix.git"
+  source: "https://github.com/salt-formulas/salt-formula-postfix.git"
